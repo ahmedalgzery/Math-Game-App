@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/const.dart';
 import 'package:mathgame/utils/widgets/custom_button.dart';
+import 'package:mathgame/utils/widgets/keyboard_number.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,6 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String userAnsewr = '4';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,27 +27,39 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: Container(
               child: Center(
-                child: Text(
-                  '1 + 1 = ?',
-                  style: whiteTextStyle,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    //question
+                    Text(
+                      '1 + 1 = ',
+                      style: whiteTextStyle,
+                    ),
+                    //answer
+
+                    Container(
+                      height: 50,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.deepPurple[400],
+                      ),
+                      child: Center(
+                        child: Text(
+                          userAnsewr,
+                          style: whiteTextStyle,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
           //section3
-          Expanded(
+          const Expanded(
             flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: GridView.builder(
-                  itemCount: numberPad.length,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4),
-                  itemBuilder: (context, index) => CustomButton(
-                        number: numberPad[index],
-                      )),
-            ),
+            child: KeyboardNumber(),
           ),
         ],
       ),

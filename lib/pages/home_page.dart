@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
           //section2
           Expanded(
             child: Container(
-              child:  Center(
+              child: Center(
                 child: Text(
                   '1 + 1 = ?',
                   style: whiteTextStyle,
@@ -34,9 +34,16 @@ class _HomePageState extends State<HomePage> {
           //section3
           Expanded(
             flex: 2,
-            child: Container(
-              color: Colors.green,
-            ),
+            child: GridView.builder(
+                itemCount: 15,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4),
+                itemBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: Container(
+                        color: Colors.deepPurple,
+                      ),
+                    )),
           ),
         ],
       ),

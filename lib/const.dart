@@ -5,3 +5,4 @@ var whiteTextStyle = const TextStyle(
   fontWeight: FontWeight.bold,
   color: Colors.white,
 );
+

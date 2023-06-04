@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/const.dart';
+import 'package:mathgame/utils/widgets/custom_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,16 +35,17 @@ class _HomePageState extends State<HomePage> {
           //section3
           Expanded(
             flex: 2,
-            child: GridView.builder(
-                itemCount: 15,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4),
-                itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.all(4),
-                      child: Container(
-                        color: Colors.deepPurple,
-                      ),
-                    )),
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: GridView.builder(
+                  itemCount: numberPad.length,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4),
+                  itemBuilder: (context, index) => CustomButton(
+                        number: numberPad[index],
+                      )),
+            ),
           ),
         ],
       ),
